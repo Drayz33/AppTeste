@@ -61,7 +61,6 @@ jobs:
         env:
           ANDROID_HOME: ${{ secrets.ANDROID_HOME }}
           JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
-
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
