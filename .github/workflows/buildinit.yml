@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Create Buildozer
+        run: |
+          buildozer init
+        env:
+          ANDROID_HOME: ${{ secrets.ANDROID_HOME }}
+          JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
