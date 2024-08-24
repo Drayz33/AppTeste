@@ -53,18 +53,15 @@ jobs:
             libffi-dev
 
           pip install buildozer
-          
-      - name: Create Buildozer
-        run: |
-          buildozer init
-          
+
       - name: Build APK
         run: |
           buildozer android clean
-          buildozer android debug
+          buildozer android debug --log_level=2
         env:
           ANDROID_HOME: ${{ secrets.ANDROID_HOME }}
           JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
